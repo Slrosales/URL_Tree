@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Tree {
     private Node root;
@@ -58,13 +60,11 @@ public class Tree {
         return max + 1;
     }
 
-    static void print(Node node, boolean[] depthB, int depth, boolean isLast )
-    {
+    public static void print(Node node, boolean[] depthB, int depth, boolean isLast ){
         if (node == null)
             return;
 
         for (int i = 1; i < depth; ++i) {
-            
             if (depthB[i] == true) {
                 System.out.print("│" + " " + " " + " ");
             } else {
@@ -77,7 +77,6 @@ public class Tree {
 
         else if (isLast) {
             System.out.print("└── " +  node.element + '\n');
-
             depthB[depth] = false;
         }
         else {
@@ -91,7 +90,7 @@ public class Tree {
         depthB[depth] = true;
     }
 
-    static void print(Node node){
+    public static void print(Node node){
         int nv = 1000;
 
         boolean[] depthB = new boolean[nv];
@@ -101,6 +100,39 @@ public class Tree {
 
         print(node, depthB, 0, false);
     }
+
+    static int maxLevelNodes(Node node, int maxCont) {
+        if (node == null)
+            return maxCont;
+
+        Queue<Node > q = new LinkedList<>(); // Create a queue
+        q.add(node); // Enqueue root
+        while (!q.isEmpty())
+        {
+            int n = q.size();
+
+            while (n > 0)
+            {
+                int cont = 0;
+
+                Node p = q.peek();
+                q.remove();
+
+                for (int i = 0; i < p.child.size(); i++){
+                    q.add(p.child.get(i));
+                    cont = cont + 1;
+                }
+
+                if (maxCont < cont){
+                    maxCont = cont;
+                }
+
+                n--;
+            }
+        }
+        return maxCont;
+    }
+
 
 }
 

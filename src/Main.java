@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Main{
     public static Tree tree = new Tree();
     public static void main(String[] args) throws IOException{
+
         Scanner read = new Scanner(System.in);
 
         String url = read.nextLine();
@@ -31,11 +32,25 @@ public class Main{
             //System.out.println(tree.Height(tree.getRoot()));
             //System.out.println((tree.getRoot().child.size()));
             //tree.preOrder();
+            //System.out.println(tree.maxLevelNodes(tree.getRoot(), 0));
+            //coordinates(tree.getRoot());
 
-            tree.print(tree.getRoot());
+            //tree.print(tree.getRoot());
+            int Height = tree.Height(tree.getRoot());
+            int maxNodes = tree.maxLevelNodes(tree.getRoot(), 0)
+            int width = width(maxNodes, 15,10);
+            int height = height(Height, 10);
+
+
         }
     }
 
+    public static int width(int maxNodes, int xd,int xy){
+        return (xd + xy) * maxNodes;
+    }
+    public static int height(int height,int xy){
+        return height * xy;
+    }
 
     public static boolean urlValidator(String url)
     {
@@ -67,6 +82,7 @@ public class Main{
           //  System.out.println("xd    "+element.nextElementSibling().nodeName()+ " " +element.nodeName());
         webCrawler(element.nextElementSibling(), father);
     }
+
 
     public static int statusCode(String url){
         Connection.Response response = null;

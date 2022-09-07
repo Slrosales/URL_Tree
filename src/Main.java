@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
 
+
 public class Main{
     public static Tree tree = new Tree();
     public static void main(String[] args) throws IOException{
@@ -29,9 +30,12 @@ public class Main{
 
             //System.out.println(tree.Height(tree.getRoot()));
             //System.out.println((tree.getRoot().child.size()));
+            //tree.preOrder();
 
+            tree.print(tree.getRoot());
         }
     }
+
 
     public static boolean urlValidator(String url)
     {
@@ -55,12 +59,12 @@ public class Main{
         }
 
         if (element.childrenSize() > 0){
-            if (element.firstElementChild() != null && element.nodeName() != null)
-                System.out.println(element.firstElementChild().nodeName()+ " " +element.nodeName());
+            //if (element.firstElementChild() != null && element.nodeName() != null)
+              //  System.out.println(element.firstElementChild().nodeName()+ " " +element.nodeName());
             webCrawler(element.firstElementChild(), element.nodeName());
         }
-        if (element.nextElementSibling() != null && element.nodeName() != null)
-            System.out.println("xd    "+element.nextElementSibling().nodeName()+ " " +element.nodeName());
+        //if (element.nextElementSibling() != null && element.nodeName() != null)
+          //  System.out.println("xd    "+element.nextElementSibling().nodeName()+ " " +element.nodeName());
         webCrawler(element.nextElementSibling(), father);
     }
 

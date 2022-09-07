@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Tree {
     private Node root;
 
@@ -56,4 +58,66 @@ public class Tree {
         return max + 1;
     }
 
+    public void preOrder(Node node, int cont) {
+        if (node != null) {
+            System.out.print("│ ");
+            System.out.println("└──"+node.element);
+            for (Node current : node.child) {
+                for (int i = 0; i < cont; i++) {
+                    System.out.print("\t");
+                }
+                preOrder(current, cont++);
+            }
+        }
+    }
+
+    void preOrder() {
+        preOrder(getRoot(), 0);
+    }
+
+    static void print(Node node, boolean[] depthB, int depth, boolean isLast )
+    {
+        if (node == null)
+            return;
+
+        for (int i = 1; i < depth; ++i) {
+            
+            if (depthB[i] == true) {
+                System.out.print("│" + " " + " " + " ");
+            } else {
+                System.out.print(" " + " " + " " + " ");
+            }
+        }
+
+        if (depth == 0)
+            System.out.println(node.element);
+
+        else if (isLast) {
+            System.out.print("└── " +  node.element + '\n');
+
+            depthB[depth] = false;
+        }
+        else {
+            System.out.print("└── " +  node.element + '\n');
+        }
+
+        int it = 0;
+        for (Node i : node.child) {
+            print(i, depthB, depth + 1, it == (node.child.size()) - 1);
+        }
+        depthB[depth] = true;
+    }
+
+    static void print(Node node){
+        int nv = 1000;
+
+        boolean[] depthB = new boolean[nv];
+        Arrays.fill(depthB, true);
+
+        // Tree Formation
+
+        print(node, depthB, 0, false);
+    }
+
 }
+

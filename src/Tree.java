@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class Tree {
     private Node root;
 
@@ -21,15 +17,43 @@ public class Tree {
         if (node == null){
             node = new Node(element);
         } else {
-            String end = element.substring(0, 1);
-            if(end != "/"){
-                node.child.add(new Node(element));
+            Node current = search(father);
+            if (current != null){
+                current.child.add(new Node(element));
             }else{
-
+                node.child.add(new Node(element));
             }
         }
-
         return node;
+    }
+
+    Node resultado = null;
+    private Node search(Node node, String element){
+        if (node==null)
+            resultado = null;
+
+        if (element == node.element)
+            resultado = node;
+
+        for (Node current : node.child)
+            search(current, element);
+
+        return resultado;
+    }
+
+    public Node search(String element) {
+        return(search(root, element));
+    }
+
+    public int Height(Node root){
+
+        int max = 0;
+        for (Node childNode  : root.child) {
+            int height = Height(childNode);
+            if (height > max)
+                max = height;
+        }
+        return max + 1;
     }
 
 }

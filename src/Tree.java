@@ -58,23 +58,6 @@ public class Tree {
         return max + 1;
     }
 
-    public void preOrder(Node node, int cont) {
-        if (node != null) {
-            System.out.print("│ ");
-            System.out.println("└──"+node.element);
-            for (Node current : node.child) {
-                for (int i = 0; i < cont; i++) {
-                    System.out.print("\t");
-                }
-                preOrder(current, cont++);
-            }
-        }
-    }
-
-    void preOrder() {
-        preOrder(getRoot(), 0);
-    }
-
     static void print(Node node, boolean[] depthB, int depth, boolean isLast )
     {
         if (node == null)

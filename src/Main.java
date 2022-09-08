@@ -10,18 +10,19 @@ import java.net.URL;
 import java.util.Scanner;
 
 
-public class Main{
+public class Main {
     public static Tree tree = new Tree();
-    public static void main(String[] args) throws IOException{
+
+    public static void main(String[] args) throws IOException {
 
         Scanner read = new Scanner(System.in);
 
         String url = read.nextLine();
-        while (urlValidator(url) != true){
+        while (urlValidator(url) != true) {
             url = read.nextLine();
         }
 
-        if (statusCode(url) == 200){
+        if (statusCode(url) == 200) {
 
             Document doc = getHTML(url);
             Document docs = Jsoup.parse(doc.toString());
@@ -37,13 +38,18 @@ public class Main{
 
             //tree.print(tree.getRoot());
             int Height = tree.Height(tree.getRoot());
-            int maxNodes = tree.maxLevelNodes(tree.getRoot(), 0)
-            int width = width(maxNodes, 15,10);
+            int maxNodes = tree.maxLevelNodes(tree.getRoot(), 0);
+            int width = width(maxNodes, 15, 10);
             int height = height(Height, 10);
 
+            tree.coordinates(tree.getRoot(), width, 15);
+
+            tree.preOrder(tree.getRoot());
 
         }
     }
+
+
 
     public static int width(int maxNodes, int xd,int xy){
         return (xd + xy) * maxNodes;

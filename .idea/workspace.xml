@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a3c5ae3-c487-402b-9dac-638611d2766a" name="Changes" comment="Function preOrder deleted">
+    <list default="true" id="4a3c5ae3-c487-402b-9dac-638611d2766a" name="Changes" comment="Screen size according to the number of nodes and spacing between them">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Node.java" afterDir="false" />
@@ -100,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662539375838</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Screen size according to the number of nodes and spacing between them">
+      <created>1662586580972</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662586580972</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,7 +126,8 @@
     <MESSAGE value="Obtain tags and insert them into the tree" />
     <MESSAGE value="painting the tree in console" />
     <MESSAGE value="Function preOrder deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Function preOrder deleted" />
+    <MESSAGE value="Screen size according to the number of nodes and spacing between them" />
+    <option name="LAST_COMMIT_MESSAGE" value="Screen size according to the number of nodes and spacing between them" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -127,6 +135,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.StackOverflowError" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.NoSuchElementException" package="java.util" />
+          <option name="timeStamp" value="5" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

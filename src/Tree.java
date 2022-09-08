@@ -101,7 +101,7 @@ public class Tree {
         print(node, depthB, 0, false);
     }
 
-    static int maxLevelNodes(Node node, int maxCont) {
+    public static int maxLevelNodes(Node node, int maxCont) {
         if (node == null)
             return maxCont;
 
@@ -133,6 +133,47 @@ public class Tree {
         return maxCont;
     }
 
+    public static void coordinates(Node node, int width, int xy) {
+        if (node != null) {
+            Queue<Node> Q = new LinkedList<>(); // Create a queue
+            Q.add(node); // Enqueue root
+            int div = 0;
+            while (!Q.isEmpty()) {
+                int size = Q.size();
 
+                while (size > 0) {
+
+                    Node current = Q.peek();
+                    Q.remove();
+
+                    int plus = 0;
+                    div = xy + div;
+                    for (int i = 0; i < current.child.size(); i++) {
+                        plus = (width / current.child.size() + 1) + plus;
+                        Q.add(current.child.get(i));
+                        current.child.get(i).setX(plus);
+                        current.child.get(i).setY(div);
+                    }
+                    size--;
+
+                }
+            }
+        } else {
+            return;
+        }
+    }
+
+    public void preOrder(Node node) {
+        if (node != null) {
+            System.out.println("Nombre: " + node.element + " coordenadas: " + node.getX() +"," + node.getY());
+            for (Node current : node.child) {
+                preOrder(current);
+            }
+        }
+    }
+
+    void preOrder() {
+        preOrder(getRoot());
+    }
 }
 

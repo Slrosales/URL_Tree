@@ -51,7 +51,7 @@ public class Tree {
 
     public int Height(Node root){
 
-        int max = 0;
+        int max = 1;
         for (Node childNode  : root.child) {
             int height = Height(childNode);
             if (height > max)
@@ -135,21 +135,25 @@ public class Tree {
 
     public static void coordinates(Node node, int width, int xy) {
         if (node != null) {
-            Queue<Node> Q = new LinkedList<>(); // Create a queue
-            Q.add(node); // Enqueue root
-            int div = 0;
+            node.setX(width / 2);
+            node.setY(xy);
+
+            Queue<Node> Q = new LinkedList<>();
+            Q.add(node);
+            int div = xy;
+
             while (!Q.isEmpty()) {
                 int size = Q.size();
+                int plus = 0;
+                div = xy + div;
 
                 while (size > 0) {
 
                     Node current = Q.peek();
                     Q.remove();
 
-                    int plus = 0;
-                    div = xy + div;
                     for (int i = 0; i < current.child.size(); i++) {
-                        plus = (width / current.child.size() + 1) + plus;
+                        plus = (width / (current.child.size() + 1)) + plus;
                         Q.add(current.child.get(i));
                         current.child.get(i).setX(plus);
                         current.child.get(i).setY(div);

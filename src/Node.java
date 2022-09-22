@@ -28,4 +28,24 @@ public class Node {
     public void setY(int y) {
         this.y = y;
     }
+
+    public ArrayList<Node> getChild() {
+        return child;
+    }
+
+    public void setChild(ArrayList<Node> child) {
+        this.child = child;
+    }
+
+    public String getElement() {
+        return element;
+    }
+
+    public void setElement(String element) {
+        this.element = element;
+    }
+
+    public int getChildSize() {
+        return child.size();
+    }
 }

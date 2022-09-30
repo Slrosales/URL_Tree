@@ -105,8 +105,8 @@ public class Tree {
         if (node == null)
             return maxCont;
 
-        Queue<Node > q = new LinkedList<>(); // Create a queue
-        q.add(node); // Enqueue root
+        Queue<Node > q = new LinkedList<>();
+        q.add(node);
         while (!q.isEmpty())
         {
             int n = q.size();

@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 
 public class Interfaz extends javax.swing.JFrame {
@@ -29,6 +29,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     }
 
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         ImageIcon icon = new ImageIcon(getClass().getResource("Fondo.png"));
@@ -83,7 +85,7 @@ public class Interfaz extends javax.swing.JFrame {
         jButton1.setText("Dibujar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                B_dibujar(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -140,14 +142,19 @@ public class Interfaz extends javax.swing.JFrame {
 
     }//GEN-LAST:event_URLActionPerformed
 
-    private void B_dibujar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_B_dibujar
-        Scanner read = new Scanner(System.in);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        B_dibujar();
+        JScrollBar barx = jScrollPane1.getHorizontalScrollBar();
+        int x = tree.getRoot().getX();
 
+        barx.setValue(x - jScrollPane1.getWidth()/2);
+    }//GEN-LAST:event_jButton1ActionPerformed
+    private void B_dibujar() {//GEN-FIRST:event_B_dibujar
         String url = URL.getText();
-        while (urlValidator(url) != true) {
-            url = read.nextLine();
+        if (urlValidator(url) != true || statusCode(url) != 200) {
+            JOptionPane.showMessageDialog(null, "URL no funcional, por favor intente nuevamente", "Error URL", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-
         if (statusCode(url) == 200) {
 
             Document doc = getHTML(url);
@@ -210,41 +217,6 @@ public class Interfaz extends javax.swing.JFrame {
         this.setObjArbol(tree);
     }
 
-    public static void main(String[] args) throws IOException {
-
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        Interfaz prueba = new Interfaz();
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                prueba.setVisible(true);
-
-            }
-        });
-    }
-
-
 
     public static int width(int maxNodes, int xd,int xy){
         return xd  * maxNodes;
@@ -304,6 +276,40 @@ public class Interfaz extends javax.swing.JFrame {
         } catch (IOException ex){
             return null;
         }
+    }
+
+    public static void main(String args[]) {
+
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        Interfaz prueba = new Interfaz();
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                prueba.setVisible(true);
+
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
